@@ -50,8 +50,8 @@
             </div>
         </div>
         <div class="notify-section">
-            <p class="notify">❌ Pin Didn't Match, Please try again</p>
-            <p class="notify">✅ Pin Matched... Secret door is opening for you</p>
+            <p id="incorrect-pin" class="notify">❌ Pin Didn't Match, Please try again!</p>
+            <p id="correct-pin" class="notify">✅ Pin Matched... Secret door is opened!</p>
         </div>
     </div>
 
@@ -86,7 +86,19 @@
             }
         })
 
-       
+        //verifying pin
+        function verifyPin(){
+            const pinGenerated = document.getElementById('pin').value;
+            const typedPin = document.getElementById('typed-pin').value;
+
+            if(pinGenerated === typedPin){
+                const correct = document.getElementById('correct-pin');
+                correct.style.display = 'block';
+            }else{
+                const correct = document.getElementById('incorrect-pin');
+                correct.style.display = 'block';
+            }
+        }
     </script>
 </body>
 </html>
