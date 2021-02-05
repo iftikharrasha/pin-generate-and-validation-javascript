@@ -37,7 +37,7 @@
                                 <div class="button">3</div>
                             </div>
                             <div class="calc-button-row">
-                                <div class="button">B</div>
+                                <div onclick="backSpace()" class="button">&larr;</div>
                                 <div class="button">0</div>
                                 <div class="button">C</div>
                             </div>
@@ -78,14 +78,10 @@
             //console.log(event.target);                  //gives us the targeted event, what we clicked        
             const digitClicked = event.target.innerText; 
             if(isNaN(digitClicked)){                      //isNaN = is not a number
-                //handle clear
-                if(digitClicked === 'C'){
+                if(digitClicked === 'C'){                 //handle clear
                     const typed = document.getElementById('typed-pin');
                     typed.value = '';
-                }else{
-                    //handle backspace
-                    console.log("handle backspace");
-                }               
+                }            
             }else{
                 const typedInput = document.getElementById('typed-pin');
                 typedInput.value = typedInput.value + digitClicked;
@@ -111,6 +107,12 @@
             const incorrect = document.getElementById('incorrect-pin');
             incorrect.style.display = incorrectStatus;
         }
+
+        //handle backspace
+        function backSpace(){                                   
+            var currentInput = document.getElementById('typed-pin').value;
+            document.getElementById('typed-pin').value = currentInput.substr(0, currentInput.length - 1);
+        } 
     </script>
 </body>
 </html>
